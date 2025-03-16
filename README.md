@@ -1,2 +1,2 @@
-# QA-Automation-Mobile
-Repository QA - Automation Mobile
+QA-Automation-Web
+Repository QA - Automation Web
