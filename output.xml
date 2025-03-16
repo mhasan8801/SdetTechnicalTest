@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.7 on win32)" generated="20250316 11:04:33.411" rpa="false" schemaversion="4">
+<suite id="s1" name="getSingleUser" source="d:\QA\TechnicalTest\SdetTechnicalTest\api-test\tests\getSingleUser.robot">
+<test id="s1-t1" name="Scenario: Verify GET Single User" line="6">
+<kw name="Given API is Set Up" library="keywords" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${SESSION}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250316 11:04:34.070" level="INFO">Creating Session using : alias=API_TEST, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250316 11:04:34.068" endtime="20250316 11:04:34.072"/>
+</kw>
+<status status="PASS" starttime="20250316 11:04:34.067" endtime="20250316 11:04:34.072"/>
+</kw>
+<kw name="When I Send a GET Request for a Single User" library="keywords">
+<arg>2</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${SESSION}</arg>
+<arg>${SINGLE_USER_ENDPOINT}/${user_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250316 11:04:34.448" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250316 11:04:34.450" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 16 Mar 2025 04:04:34 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1741981860&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=4g%2Fjy%2BOndzu7gfdmwiagLXcOelCBCOIjh2rdYl4enCk%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1741981860&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=4g%2Fjy%2BOndzu7gfdmwiagLXcOelCBCOIjh2rdYl4enCk%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"152-ApQgGHL6RKwaebFlrPCYPBO1xHg"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '415', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '92115e035aba3e44-SIN', 'Content-Encoding': 'gzip', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=19934&amp;min_rtt=19890&amp;rtt_var=5669&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2834&amp;recv_bytes=770&amp;delivery_rate=202682&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=8ebab3ced10e89aa&amp;ts=157&amp;x=0"'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral","text":"Tired of writing endless social media content? Let Content Caddy generate it for you."}} 
+ </msg>
+<msg timestamp="20250316 11:04:34.450" level="INFO">d:\APP\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250316 11:04:34.452" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250316 11:04:34.074" endtime="20250316 11:04:34.453"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${GET_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250316 11:04:34.458" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250316 11:04:34.453" endtime="20250316 11:04:34.458"/>
+</kw>
+<status status="PASS" starttime="20250316 11:04:34.073" endtime="20250316 11:04:34.459"/>
+</kw>
+<kw name="Then The Response Status Should Be 200" library="keywords">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20250316 11:04:34.465" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250316 11:04:34.462" endtime="20250316 11:04:34.465"/>
+</kw>
+<status status="PASS" starttime="20250316 11:04:34.461" endtime="20250316 11:04:34.466"/>
+</kw>
+<kw name="And The Response Should Contain User Data" library="keywords">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20250316 11:04:34.470" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250316 11:04:34.468" endtime="20250316 11:04:34.471"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${GET_RESPONSE.json()}</arg>
+<arg>data</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250316 11:04:34.472" endtime="20250316 11:04:34.474"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${data}</var>
+<arg>${GET_RESPONSE.json()}</arg>
+<arg>data</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250316 11:04:34.475" level="INFO">${data} = {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}</msg>
+<status status="PASS" starttime="20250316 11:04:34.475" endtime="20250316 11:04:34.476"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${data}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250316 11:04:34.476" endtime="20250316 11:04:34.477"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${data["id"]} != None</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250316 11:04:34.477" endtime="20250316 11:04:34.479"/>
+</kw>
+<status status="PASS" starttime="20250316 11:04:34.467" endtime="20250316 11:04:34.480"/>
+</kw>
+<status status="PASS" starttime="20250316 11:04:34.066" endtime="20250316 11:04:34.481"/>
+</test>
+<status status="PASS" starttime="20250316 11:04:33.421" endtime="20250316 11:04:34.484"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="getSingleUser">getSingleUser</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

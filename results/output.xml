@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.7 on win32)" generated="20250316 11:00:12.466" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="D:\QA\TechnicalTest\SdetTechnicalTest\api-test\tests">
+<suite id="s1-s1" name="getSingleUser" source="D:\QA\TechnicalTest\SdetTechnicalTest\api-test\tests\getSingleUser.robot">
+<test id="s1-s1-t1" name="Scenario: Verify GET Single User" line="6">
+<kw name="Given API is Set Up" library="keywords" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${SESSION}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250316 11:00:12.986" level="INFO">Creating Session using : alias=API_TEST, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250316 11:00:12.986" endtime="20250316 11:00:12.986"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:12.986" endtime="20250316 11:00:12.986"/>
+</kw>
+<kw name="When I Send a GET Request for a Single User" library="keywords">
+<arg>2</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${SESSION}</arg>
+<arg>${SINGLE_USER_ENDPOINT}/${user_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250316 11:00:13.310" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250316 11:00:13.311" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 16 Mar 2025 04:00:13 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1741981860&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=4g%2Fjy%2BOndzu7gfdmwiagLXcOelCBCOIjh2rdYl4enCk%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1741981860&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=4g%2Fjy%2BOndzu7gfdmwiagLXcOelCBCOIjh2rdYl4enCk%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"152-ApQgGHL6RKwaebFlrPCYPBO1xHg"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '154', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '921157a35edace43-SIN', 'Content-Encoding': 'gzip', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=20309&amp;min_rtt=20162&amp;rtt_var=5777&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2835&amp;recv_bytes=770&amp;delivery_rate=201471&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=08ef7f99e63421db&amp;ts=141&amp;x=0"'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral","text":"Tired of writing endless social media content? Let Content Caddy generate it for you."}} 
+ </msg>
+<msg timestamp="20250316 11:00:13.311" level="INFO">D:\APP\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250316 11:00:13.312" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:12.987" endtime="20250316 11:00:13.312"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${GET_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250316 11:00:13.315" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:13.313" endtime="20250316 11:00:13.315"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:12.987" endtime="20250316 11:00:13.315"/>
+</kw>
+<kw name="Then The Response Status Should Be 200" library="keywords">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20250316 11:00:13.317" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:13.317" endtime="20250316 11:00:13.317"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:13.316" endtime="20250316 11:00:13.317"/>
+</kw>
+<kw name="And The Response Should Contain User Data" library="keywords">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20250316 11:00:13.320" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:13.319" endtime="20250316 11:00:13.320"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${GET_RESPONSE.json()}</arg>
+<arg>data</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250316 11:00:13.320" endtime="20250316 11:00:13.320"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${data}</var>
+<arg>${GET_RESPONSE.json()}</arg>
+<arg>data</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250316 11:00:13.320" level="INFO">${data} = {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}</msg>
+<status status="PASS" starttime="20250316 11:00:13.320" endtime="20250316 11:00:13.320"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${data}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250316 11:00:13.320" endtime="20250316 11:00:13.320"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${data["id"]} != None</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250316 11:00:13.320" endtime="20250316 11:00:13.322"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:13.319" endtime="20250316 11:00:13.323"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:12.985" endtime="20250316 11:00:13.323"/>
+</test>
+<status status="PASS" starttime="20250316 11:00:12.486" endtime="20250316 11:00:13.325"/>
+</suite>
+<suite id="s1-s2" name="postCreateUser" source="D:\QA\TechnicalTest\SdetTechnicalTest\api-test\tests\postCreateUser.robot">
+<test id="s1-s2-t1" name="Scenario: Verify POST Create User" line="6">
+<kw name="Given API is Set Up" library="keywords" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${SESSION}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250316 11:00:13.339" level="INFO">Creating Session using : alias=API_TEST, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250316 11:00:13.339" endtime="20250316 11:00:13.339"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:13.338" endtime="20250316 11:00:13.339"/>
+</kw>
+<kw name="When I Send a POST Request to Create a User" library="keywords">
+<arg>John Doe</arg>
+<arg>QA Engineer</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250316 11:00:13.341" level="INFO">${data} = {'name': 'John Doe', 'job': 'QA Engineer'}</msg>
+<status status="PASS" starttime="20250316 11:00:13.341" endtime="20250316 11:00:13.341"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${SESSION}</arg>
+<arg>${CREATE_USER_ENDPOINT}</arg>
+<arg>json=${data}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20250316 11:00:13.341" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20250316 11:00:14.029" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '42', 'Content-Type': 'application/json'} 
+ body=b'{"name": "John Doe", "job": "QA Engineer"}' 
+ </msg>
+<msg timestamp="20250316 11:00:14.030" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Sun, 16 Mar 2025 04:00:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '89', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1742097613&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1s5EJb7vTFKnRaBydwEd3aU%2FRpl0OMkfQj9m7kxMKi8%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1742097613&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1s5EJb7vTFKnRaBydwEd3aU%2FRpl0OMkfQj9m7kxMKi8%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"59-XqQamQogiWK4th3aDtvybP566BM"', 'Via': '1.1 vegur', 'cf-cache-status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '921157a569199f9e-SIN', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=20235&amp;min_rtt=20218&amp;rtt_var=5714&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2835&amp;recv_bytes=885&amp;delivery_rate=200649&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=b4951a1aeb02f414&amp;ts=515&amp;x=0"'} 
+ body={"name":"John Doe","job":"QA Engineer","id":"185","createdAt":"2025-03-16T04:00:13.949Z"} 
+ </msg>
+<msg timestamp="20250316 11:00:14.030" level="INFO">D:\APP\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250316 11:00:14.033" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:13.341" endtime="20250316 11:00:14.033"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${POST_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250316 11:00:14.037" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:14.033" endtime="20250316 11:00:14.038"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:13.341" endtime="20250316 11:00:14.038"/>
+</kw>
+<kw name="Then The Response Status Should Be 201" library="keywords">
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${POST_RESPONSE.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20250316 11:00:14.042" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250316 11:00:14.041" endtime="20250316 11:00:14.043"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:14.040" endtime="20250316 11:00:14.043"/>
+</kw>
+<kw name="And The Response Should Contain the Created User Data" library="keywords">
+<kw name="Should Contain" library="BuiltIn">
+<arg>${POST_RESPONSE.json()}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250316 11:00:14.045" endtime="20250316 11:00:14.047"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${POST_RESPONSE.json()["name"]}</arg>
+<arg>John Doe</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250316 11:00:14.047" endtime="20250316 11:00:14.049"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${POST_RESPONSE.json()["job"]}</arg>
+<arg>QA Engineer</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250316 11:00:14.049" endtime="20250316 11:00:14.051"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${POST_RESPONSE.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250316 11:00:14.052" level="INFO">{'name': 'John Doe', 'job': 'QA Engineer', 'id': '185', 'createdAt': '2025-03-16T04:00:13.949Z'}</msg>
+<status status="PASS" starttime="20250316 11:00:14.051" endtime="20250316 11:00:14.052"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:14.045" endtime="20250316 11:00:14.052"/>
+</kw>
+<status status="PASS" starttime="20250316 11:00:13.338" endtime="20250316 11:00:14.053"/>
+</test>
+<status status="PASS" starttime="20250316 11:00:13.327" endtime="20250316 11:00:14.056"/>
+</suite>
+<status status="PASS" starttime="20250316 11:00:12.467" endtime="20250316 11:00:14.059"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="getSingleUser">Tests.getSingleUser</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="postCreateUser">Tests.postCreateUser</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20250316 11:00:13.341" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
