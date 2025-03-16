@@ -1,2 +1,2 @@
-# SdetTechnicalTest
-Repository Technical Test SDET role
+# QA-Automation-Mobile
+Repository QA - Automation Mobile
